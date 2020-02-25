@@ -156,14 +156,29 @@ namespace WindowsFormsApplication2
                     field[x + 1, y - 1] == field[x, y] && field[x - 1, y + 1] == field[x, y] && field[x - 2, y + 2] == field[x, y] && field[x - 3, y + 3] == field[x, y]    /* диагональ справа на лево,  предпоследний снизу*/
                     )
                 {
-                    MessageBox.Show("Победа");
+                    if (!indicator)
+                    {
+                        MessageBox.Show("Победили Х");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Победили О");
+                    }
                 }
             /*}*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Form2 f = new Form2(); // окно с выбором игрока
+            if (f.ShowDialog() == DialogResult.Yes)
+            {
+                indicator = true;
+            }
+            else
+            {
+                indicator = false;
+            }
         }
     }
 }
